@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.utn.frba.dds.viewcontrollers.MethodologyResultViewController">
+   <children>
+      <SplitPane dividerPositions="0.1884422110552764" layoutX="213.0" layoutY="74.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="598.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="27.0" layoutY="14.0" spacing="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ComboBox fx:id="cbMethodology" prefHeight="27.0" prefWidth="244.0" promptText="Metodologia" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" text="Buscar" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="224.0" prefWidth="598.0">
+               <children>
+                  <TableView fx:id="tableview" prefHeight="276.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="companyColumn" prefWidth="200.0" text="Empresa" />
+                        <TableColumn fx:id="fromColumn" minWidth="6.0" prefWidth="100.0" text="Desde" />
+                        <TableColumn fx:id="toColumn" minWidth="0.0" prefWidth="100.0" text="Hasta" />
+                        <TableColumn fx:id="valueColumn" prefWidth="200.0" text="Resultado" />
+                     </columns></TableView>
+               </children></AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

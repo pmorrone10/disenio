@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ar.edu.utn.frba.dds.viewcontrollers.IndicatorsResultViewController">
+   <children>
+      <TableView fx:id="tableview" layoutY="1.0" prefHeight="276.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="indicatorColumn" prefWidth="170.0" text="Identificador" />
+          <TableColumn fx:id="companyColumn" minWidth="9.0" prefWidth="170.0" text="Empresa" />
+            <TableColumn fx:id="resultColumns" minWidth="0.0" prefWidth="260.0" text="Resultado" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

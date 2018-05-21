@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Donde Invierto?</title>
+    <!-- Bootstrap core CSS-->
+    <link href="../scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="../scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="../scripts/datatables/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+    <script src="../scripts/jquery/jquery.min.js"></script>
+    <script src="../scripts/donde-invertir/search.js"></script>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="home.html">Donde Invierto?</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Subir Archivo">
+                <a class="nav-link" href="/upload" target="_self">
+                    <i class="fa fa-fw fa-upload"></i>
+                    <span class="nav-link-text">Subir Archivo</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Consultar">
+                <a class="nav-link" href="/search" target="_self">
+                    <i class="fa fa-fw fa-search"></i>
+                    <span class="nav-link-text">Consultar</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Indicadores">
+                <a class="nav-link" href="/indicators" target="_self">
+                    <i class="fa fa-fw fa-file-text"></i>
+                    <span class="nav-link-text">Indicadores</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Metodologias">
+                <a class="nav-link" href="/methodologies" target="_self">
+                    <i class="fa fa-fw fa-bar-chart"></i>
+                    <span class="nav-link-text">Metodologias</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="login.html">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Donde Invertir</div>
+            <div class="card-body">
+                <div class="form-group col-md-12" >
+                    <form action="/search" method="GET">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            Fecha Desde: <input class="form-control" type="date" name="dateFrom">
+                        </div>
+                        <div class="col-md-6">
+                            Fecha Hasta: <input class="form-control" type="date" name="dateUpto" >
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <select class="form-control" id="getEmpresasName" name="companies">
+                                <option value="" selected disabled>Seleccionar Empresa</option>
+                                {{#each companies}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-md-6 align-content-sm-end">
+                            <button type="summit" class="btn btn-primary">Buscar</button>
+                            <input type="text" hidden="true" id="openModal" value={{showModal}}>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="form-group" align="center">
+                    <!-- Configuración de Calcular Indicadores -->
+                    <a data-toggle="modal" href="#calcIndicator" class="btn btn-large btn-info">
+                        Calcular Indicadores </a>
+                    <div id="calcIndicator" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h3>Resultado de Indicadores</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="table-responsive">
+                                    <table id="dataTableModal" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Indicador</th>
+                                            <th>Empresa</th>
+                                            <th>Resultado</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each indicatorResults}}
+                                        <tr>
+                                            <td>{{name}}</td>
+                                            <td>{{company}}</td>
+                                            <td>{{result}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    </table>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a data-dismiss="modal" class="btn btn-success">Cerrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a data-toggle="modal" href="#metodologias" class="btn btn-info btn-large">
+                        Ver donde Invertir</a>
+                    <div id="metodologias" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h3>Resultado de Metodologias</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/searchMethodologies" method="GET">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-8">
+                                            <select class="form-control" id="getMetodologias" name="met">
+                                                <option value="" selected disabled>Seleccionar Metodologia</option>
+                                                {{#each methodologies}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                        <div class="form-group" >
+                                            <button type="summit" class="btn btn-sm btn-primary">Buscar</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <div class="table-responsive">
+                                    <table id="tableMetholologies" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Empresa</th>
+                                            <th>Fecha Desde</th>
+                                            <th>Fecha Hasta</th>
+                                            <th>Resultado</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each methodologiesResult}}
+                                        <tr>
+                                            <td>{{company.name}}</td>
+                                            <td>{{from}}</td>
+                                            <td>{{to}}</td>
+                                            <td>{{result}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a data-dismiss="modal" class="btn btn-success">Cerrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                <table id="dataTable" class="table table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Creación</th>
+                        <th>Cuenta</th>
+                        <th>Valor</th>
+                        <th>Fecha</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each companyTables}}
+                    <tr>
+                        <td>{{company}}</td>
+                        <td>{{creationDate}}</td>
+                        <td>{{account}}</td>
+                        <td>{{value}}</td>
+                        <td>{{timestamp}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Your Website 2017</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Esta seguro que desea desloguearse?</div>
+                <div class="modal-footer">
+                    <form action="/logout" method="GET">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../scripts/popper/popper.min.js"></script>
+    <script src="../scripts/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="../scripts/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="../scripts/chart.js/Chart.min.js"></script>
+    <script src="../scripts/datatables/jquery.dataTables.js"></script>
+    <script src="../scripts/datatables/dataTables.bootstrap.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../scripts/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="../scripts/js/sb-admin-datatables.min.js"></script>
+    <script src="../scripts/js/sb-admin-charts.min.js"></script>
+
+</div>
+</body>
+
+</html>

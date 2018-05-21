@@ -1,0 +1,2 @@
+{"name":"NetoTotal","expression":"EBITDA * 10 / 100"}
+{"name":"NetoTotal","expression":"EBITDA * 10 / 100"}

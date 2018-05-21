@@ -1,0 +1,7 @@
+.selected {
+    background-color: #66e0ff;
+    color: #FFF;
+}
+#alertMessage{
+    display: none;
+}

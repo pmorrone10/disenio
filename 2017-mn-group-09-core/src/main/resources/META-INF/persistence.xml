@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="dondeInvertir" transaction-type="RESOURCE_LOCAL">
+        <!-- Persistence provider -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Entity classes -->
+        <class>ar.edu.utn.frba.dds.models.Company</class>
+        <class>ar.edu.utn.frba.dds.models.Account</class>
+        <class>ar.edu.utn.frba.dds.models.AccountName</class>
+        <class>ar.edu.utn.frba.dds.models.users.User</class>
+        <class>ar.edu.utn.frba.dds.models.Indicator</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparer</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerAscending</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerLessThan</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerGreaterThan</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerDescending</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.Methodology</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/2017-mn-group-09?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;useSSL=false&amp;serverTimezone=GMT-3" />
+            <property name="javax.persistence.jdbc.user" value="user_app" />
+            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="javax.persistence.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update"></property>
+            <property name ="hibernate.show_sql" value = "true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="use_sql_comments" value="true" />
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="dondeInvertirTest" transaction-type="RESOURCE_LOCAL">
+        <!-- Persistence provider -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Entity classes -->
+        <class>ar.edu.utn.frba.dds.models.Company</class>
+        <class>ar.edu.utn.frba.dds.models.Account</class>
+        <class>ar.edu.utn.frba.dds.models.AccountName</class>
+        <class>ar.edu.utn.frba.dds.models.users.User</class>
+        <class>ar.edu.utn.frba.dds.models.Indicator</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparer</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerAscending</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerLessThan</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerGreaterThan</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.comparer.MethodologyComparerDescending</class>
+        <class>ar.edu.utn.frba.dds.models.methodology.Methodology</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/2017-mn-group-09-test?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;useSSL=false&amp;serverTimezone=GMT-3" />
+            <property name="javax.persistence.jdbc.user" value="user_test" />
+            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="javax.persistence.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update"></property>
+            <property name ="hibernate.show_sql" value = "true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="use_sql_comments" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>
